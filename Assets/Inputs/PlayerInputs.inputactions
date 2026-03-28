@@ -73,6 +73,34 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "UI",
+            "id": "d1e4d98f-9fa2-4f66-94b7-77bfe4103e4e",
+            "actions": [
+                {
+                    "name": "ToggleStats",
+                    "type": "Button",
+                    "id": "528f85be-9804-46d2-a76e-d3b855c4f08d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ce033b8c-f06e-4ecf-ba46-a051533ce707",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleStats",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

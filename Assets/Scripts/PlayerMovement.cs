@@ -4,8 +4,6 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
-
-    private int moveSpeed = 10;
     private Vector2 moveInput;
     private Rigidbody2D rb;
 
@@ -19,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + moveInput * StatsManager.Instance.moveSpeed * Time.fixedDeltaTime);
     }
 
 }

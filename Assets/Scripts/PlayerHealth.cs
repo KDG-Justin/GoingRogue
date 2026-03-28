@@ -2,8 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHearts = 3;
-    private int currentHearts;
 
     [SerializeField] GameObject fullHeart;
     [SerializeField] GameObject emptyHeart;
@@ -12,8 +10,8 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        currentHearts = maxHearts;
-        CreateHearts(maxHearts, currentHearts);
+        StatsManager.Instance.currentHearts = StatsManager.Instance.maxHearts;
+        CreateHearts(StatsManager.Instance.maxHearts, StatsManager.Instance.currentHearts);
     }
 
     public void CreateHearts(int maxHearts, int currentHearts)
@@ -39,12 +37,12 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHearts -= damage;
+        StatsManager.Instance.currentHearts -= damage;
         animator.Play("HeartContainer");
-        if (currentHearts < 0)
-            currentHearts = 0;
-        CreateHearts(maxHearts, currentHearts);
-        if (currentHearts == 0)
+        if (StatsManager.Instance.currentHearts < 0)
+            StatsManager.Instance.currentHearts = 0;
+        CreateHearts(StatsManager.Instance.maxHearts, StatsManager.Instance.currentHearts);
+        if (StatsManager.Instance.currentHearts == 0)
         {
             Die();
         }
@@ -52,16 +50,16 @@ public class PlayerHealth : MonoBehaviour
 
     public void Heal(int healAmount)
     {
-        currentHearts += healAmount;
-        if (currentHearts > maxHearts)
-            currentHearts = maxHearts;
-        CreateHearts(maxHearts, currentHearts);
+        StatsManager.Instance.currentHearts += healAmount;
+        if (StatsManager.Instance.currentHearts > StatsManager.Instance.maxHearts)
+            StatsManager.Instance.currentHearts = StatsManager.Instance.maxHearts;
+        CreateHearts(StatsManager.Instance.maxHearts, StatsManager.Instance.currentHearts);
     }
 
     public void IncreaseMaxHearts(int amount)
     {
-        maxHearts += amount;
-        CreateHearts(maxHearts, currentHearts);
+        StatsManager.Instance.maxHearts += amount;
+        CreateHearts(StatsManager.Instance.maxHearts, StatsManager.Instance.currentHearts);
     }
 
     void Die()
